@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CORP_ARCHIVE // MAIN_TERMINAL</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="frame main-frame">
+        <div class="terminal-header">
+            <span>CORP_ARCHIVE_v2.1</span>
+            <span id="operator-display">USER: OPERTOR-XX</span>
+        </div>
+        <div class="terminal-body">
+            <aside class="sidebar">
+                <h3>> NAVIGATION</h3>
+                <a href="main.html" class="active">> MAIN_MENU</a>
+                <h3>> DATABASE_INDEX</h3>
+                <a href="units/taipan.html" >> TAIPAN_FAMILY</a>
+                <a href="units/goliath.html" >> GOLIATH_FAMILY</a>
+                <a href="units/locust.html" >> LOCUST_FAMILY</a>
+
+                <h3 class="mt-20">> RECORDS</h3>
+                <a href="lore/combatlogs.html" >> COMBAT_LOGS</a>
+                <a href="lore/crewreports.html" >> CREW_REPORTS</a>
+                <h3 class="mt-40">> EXIT</h3>
+                <a href="index.html" class="danger-link" onclick="localStorage.removeItem('corpOperator')">> LOGOUT</a>
+            </aside>
+            <main class="content">
+                <h1 class="glitch-text" data-text="WELCOME, OPERATOR">WELCOME, OPERATOR</h1>
+                <div class="news-feed">
+                    <h2>> LATEST_INTEL // СВОДКА</h2>
+                    <div class="news-item">
+                        <p class="news-date">[2084-11-09]</p>
+                        <p>Системы архива успешно переведены в режим онлайн. Доступ к данным корпорации разрешен.</p>
+                    </div>
+                    <div class="news-item">
+                        <p class="news-date">[2084-11-08]</p>
+                        <p>Полевые испытания серийных моделей Taipan-61 и Taipan-63 признаны успешными. <span class="status-green">СТАТУС ОДОБРЕНО</span></p>
+                    </div>
+                    <div class="news-item">
+                        <p class="news-date">[2084-11-05]</p>
+                        <p>Внимание! Обнаружена попытка несанкционированного доступа к файлам Goliath-144. <span class="status-red">УГРОЗА: ВЫСОКАЯ</span></p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        const currentOp = localStorage.getItem('corpOperator') || 'OPERATOR-XX';
+        document.getElementById('operator-display').textContent = `USER: ${currentOp}`;
+    </script>
+</body>
+</html>

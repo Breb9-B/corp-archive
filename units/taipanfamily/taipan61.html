@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CORP_ARCHIVE // UNIT_FILE</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <div class="frame main-frame">
+        <div class="terminal-header">
+            <span>CORP_ARCHIVE_v2.1</span>
+            <span id="operator-display">USER: OPERATOR-XX</span>
+        </div>
+        <div class="terminal-body">
+            <aside class="sidebar">
+                <img src="taipan-61.png" alt="Taipan-61" style="width: 400%; height: 800%; object-fit: contain; transform: translateX(-13px);">
+            </aside>
+            <main class="content">
+                <a href="../taipan.html" class="btn-open" style="margin-bottom: 20px; display: inline-block;">[ < RETURN TO TAIPAN ]</a>
+                
+                <h1 class="glitch-text">UNIT_DATA // CLASSIFIED</h1>
+                
+                <div class="family-desc" style="text-align: center; margin-top: 100px; border: none;">
+                    <h2 style="font-size: 2rem; color: #00ff41; text-shadow: 0 0 10px #00ff41;">// COMING SOON //</h2>
+                    <p style="font-size: 1rem; margin-top: 20px;">Схематика и полное досье на эту машину будут загружены в архив позже.</p>
+                    <p style="font-size: 0.8rem; color: #008f11; margin-top: 40px;">[ DATA STREAM INTERRUPTED ]</p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        const currentOp = localStorage.getItem('corpOperator') || 'OPERATOR-XX';
+        document.getElementById('operator-display').textContent = `USER: ${currentOp}`;
+    </script>
+</body>
+</html>

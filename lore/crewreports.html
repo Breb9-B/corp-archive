@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CORP_ARCHIVE // RESTRICTED_ACCESS</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="frame main-frame">
+        <div class="terminal-header">
+            <span>CORP_ARCHIVE_v2.1</span>
+            <span id="operator-display">USER: OPERATOR-XX</span>
+        </div>
+        <div class="terminal-body">
+            <aside class="sidebar">
+                <h3>> NAVIGATION</h3>
+                <a href="../main.html">> MAIN_MENU</a>
+                <h3>> DATABASE_INDEX</h3>
+                <a href="../units/taipan.html" >> TAIPAN_FAMILY</a>
+                <a href="../units/goliath.html" >> GOLIATH_FAMILY</a>
+                <a href="../units/locust.html" >> LOCUST_FAMILY</a>
+
+                <h3 class="mt-20">> RECORDS</h3>
+                <a href="combatlogs.html" class="active">> COMBAT_LOGS</a>
+                <a href="#" class="active" >> CREW_REPORTS</a>
+                <h3 class="mt-40">> EXIT</h3>
+                <a href="../index.html" class="danger-link">> LOGOUT</a>
+            </aside>
+
+            <main class="content">
+                
+                <h1 class="glitch-text">DATA_STREAM // RESTRICTED</h1>
+                
+                <div class="family-desc" style="text-align: center; margin-top: 60px; border: none;">
+                    <h2 style="font-size: 2.5rem; color: #00ff41; text-shadow: 0 0 10px #00ff41; margin-bottom: 20px;">// COMING SOON //</h2>
+                    <p style="font-size: 1rem; margin-bottom: 40px;">Этот раздел архива находится в стадии активной оцифровки.</p>
+                    
+                    <div style="text-align: left; display: inline-block; font-size: 0.9rem; color: #008f11;">
+                        <p>> DOWNLOADING_DATA_PACKAGES... [OK]</p>
+                        <p>> INDEXING_FILES... [OK]</p>
+                        <p>> DECRYPTING_RECORDS... [ <span style="color: #ff3333;">ERROR: ACCESS_DENIED</span> ]</p>
+                    </div>
+                    
+                    <p style="font-size: 0.8rem; color: #008f11; margin-top: 50px;">[ AWAITING CLEARANCE LEVEL 4 ]</p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        const currentOp = localStorage.getItem('corpOperator') || 'OPERATOR-XX';
+        document.getElementById('operator-display').textContent = `USER: ${currentOp}`;
+    </script>
+</body>
+</html>

@@ -1,0 +1,465 @@
+/* ========================================= */
+/* --- VHS ЭФФЕКТЫ И СТАРЫЙ МОНИТОР --- */
+/* ========================================= */
+body::before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 50%,
+        rgba(0, 255, 65, 0.07) 50%,
+        rgba(0, 255, 65, 0.07) 100%
+    );
+    background-size: 100% 10px;
+    z-index: 999;
+    pointer-events: none;
+    animation: scanlines 5s linear infinite;
+}
+
+body::after {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: radial-gradient(
+        circle,
+        rgba(0, 0, 0, 0) 50%,
+        rgba(0, 0, 0, 0.8) 100%
+    );
+    z-index: 998;
+    pointer-events: none;
+}
+
+body {
+    animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+    0% {opacity: 0.90;}
+    50% {opacity: 1;}
+    100% {opacity: 0.90;}
+}
+
+h1, pre, button, p {
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.7);
+}
+
+/* ========================================= */
+/* --- СТИЛЬ КАЖДОЙ СТРАНИЦЫ ---*/
+/* ========================================= */
+
+/* --- СТИЛЬ --- */
+body {
+   background: #050505;
+    color: #00ff41;
+    font-family: 'Courier New', monospace;
+     height: 100vh;
+     margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+/* --- РАМКА --- */
+.frame {
+    border: 2px solid #00ff41;
+    padding: 90px 120px;
+    position: relative;
+    background-color: rgba(0, 255, 65, 0, 0.003);
+
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2), inset 0 0 15px rgba(0, 255, 65, 0.1);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* --- ЛОГО --- */
+pre{
+    font-size: 1rem;
+    line-height: 1.1;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0 0 5px #00ff41;
+    margin-right: 105px;
+}
+/* --- КНОПКА --- */
+button {
+    background: transparent;
+    color: #00ff41;
+    border: 1px solid #00ff41;
+    padding: 15px 40px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1rem;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+}
+button:hover {
+    background: #00ff41;
+    color: #000;
+    box-shadow: 0 0 20px #00ff41;
+}
+
+/* ========================================= */
+/* --- ЗАГРУЗОЧНЫЙ ЭКРАН (LOADER) --- */
+/* ========================================= */
+
+.loader-frame {
+    min-height: 400px;
+    width: 500px;
+    align-items: flex-start;
+    padding: 30px;
+    transition: all 0.5s ease;
+}
+
+#terminal-log {
+    color:#00ff41;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    margin: 0;
+    text-align: left;
+    text-shadow: 0 0 5px #00ff41;
+}
+
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background-color: #00ff41;
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    50% {opacity: 0;}
+}
+
+.skip-link {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #555;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.skip-link:hover {
+    color:#00ff41;
+}
+
+.hidden-skip {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ========================================= */
+/* --- ГЛАВНОЕ МЕНЮ (MAIN.HTML) --- */
+/* ========================================= */
+
+.main-frame {
+    width: 900px;
+    height: 600px;
+    min-height: none;
+    max-height: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.terminal-header {
+    background: rgba(0, 255, 65, 0.1);
+    border-bottom: 1px solid #00ff41;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.terminal-body {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    padding: 0;
+    margin: 0;
+    padding-left: 191px;
+    overflow: hidden;
+    min-height: 0;
+}
+
+.sidebar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 160px;
+    padding: 70px 15px 20px 15px;
+    border-right: 1px solid #008f11;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #050505;
+    overflow: hidden;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.sidebar img {
+    align-self: center; 
+    margin-bottom: 20px;
+    max-width: 100%;
+    max-height: 50%; 
+    object-fit: contain;
+}
+
+.sidebar h3:first-child {
+    margin-top: 0;
+}
+
+.sidebar h3 {
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #00ff41;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.sidebar a {
+    display: block;
+    text-align: left;
+    color: #008f11;
+    text-decoration: none;
+    margin-bottom: 5px;
+    transition: all 0.2s;
+}
+
+.sidebar a:hover {
+    color: #00ff41;
+    text-shadow: 0 0 5px #00ff41;
+    padding-left: 5px;
+}
+
+.danger-link {color: #ff3333 !important;}
+.danger-link:hover {text-shadow: 0 0 5px #ff3333 !important;}
+.mt-20 {margin-top: 20px;}
+
+.content {
+    padding: 30px;
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.content h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #00ff41;
+    padding-bottom: 10px;
+}
+
+.news-item {
+    margin-bottom: 15px;
+    padding-left: 10px;
+    border-left: 2px solid #008f11;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.news-date {
+    color: #00ff41;
+    font-weight: bold;
+    margin-bottom: 3px;
+    font-size: 0.75rem;
+}
+
+.status-green { color: #00ff41; font-weight: bold;}
+.status-red { color: #ff3333; font-weight: bold; text-shadow: 0 0 5px #ff3333;}
+
+.sidebar a.active {
+    color: #00ff41;
+    text-shadow: 0 0 5px #00ff41;
+    border-left: 2px solid #00ff41;
+    padding-left: 5px;
+    background: rgba(0, 255, 65, 0.1);
+}
+/* ========================================= */
+/* --- БЛОК ВЫХОДА (EXIT) --- */
+/* ========================================= */
+.mt-40 {
+    margin-top: 40px !important;
+}
+.sidebar h3:last-of-type {
+    font-size: 0.75rem;
+    color: #00ff41;
+}
+.danger-link {
+    color: #ff3333 !important;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+}
+.danger-link:hover {
+    color: #ff0000 !important;
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000 !important;
+    background: rgba(255, 51, 51, 0.1);
+    padding-left: 10px;
+    border-left: 2px solid #ff0000;
+}
+
+/* ========================================= */
+/* --- КАТАЛОГ ТЕХНИКИ (TAIPAN, GOLIATH) --- */
+/* ========================================= */
+.family-desc {
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+    color: #008f11;
+    border-bottom: 1px dashed #008f11;
+    padding-bottom: 15px;
+}
+
+.unit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; 
+}
+
+.unit-card {
+    border: 1px solid #008f11;
+    padding: 20px;
+    background: rgba(0, 255, 65, 0.02);
+    position: relative;
+    transition: all 0.3s;
+}
+
+.unit-card:hover {
+    color: #00ff41;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+    background: rgba(0, 255, 65, 0.05);
+}
+
+.unit-id {
+    font-size: 0.75rem;
+    color: #008f11;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.unit-card h2{
+    color: #00ff41;
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+}
+
+.unit-tag {
+    font-size: 0.8rem;
+    color: #00ff41;
+    background: rgba(0, 255, 65, 0.1);
+    display: inline-block;
+    padding: 2px 8px;
+    margin-bottom: 15px;
+    border-left: 2px solid #00ff41;
+}
+
+.unit-card p{
+    font-size: 0.85rem;
+    color: #00ff41;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.btn-open {
+    display: inline-block;
+    color: #00ff41;
+    text-decoration: none;
+    font-size: 0.85rem;
+    border: 1px solid #00ff41;
+    padding: 5px 15px;
+    transition: all 0.2s;
+}
+
+.btn-open:hover {
+    background: #00ff41;
+    color: #000;
+    box-shadow: 0 0 10px #00ff41;
+}
+
+.sub-units {
+    margin-top: 20px;
+    padding-left: 20px;
+    border-left: 2px solid #008f11;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sub-unit {
+    font-size: 0.8rem;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.sub-id {
+    color: #00ff41;
+    font-weight: bold;
+    border: 1px dashed #00ff41;
+    padding: 2px 6px;
+    white-space: nowrap;
+}
+
+.sub-desc {
+    color: #008f11;
+}
+
+/* ========================================= */
+/* --- СТИЛИЗАЦИЯ ПОЛЗУНКА ПРОКРУТКИ --- */
+/* ========================================= */
+
+.content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.content::-webkit-scrollbar-track {
+    background: #000;
+    border-left: 1px solid #008f11;
+}
+
+.content::-webkit-scrollbar-thumb {
+    background: #008f11;
+    border-radius: 0;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+    background: #00ff41;
+    box-shadow: 0 0 10px #00ff41;
+}
+
+
+.sidebar img {
+    align-self: center;
+    transform: translateX(10px);
+    margin: 45px 0;
+    width: 630px !important; 
+    height: auto !important;
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
+}
