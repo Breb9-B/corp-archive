@@ -2,28 +2,70 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>CORP_ARCHIVE // UNIT_FILE</title>
+    <title>CORP_ARCHIVE // TAIPAN-61_FILE</title>
     <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
-    <div class="frame main-frame">
+    <div class="frame main-frame unit-page-frame">
         <div class="terminal-header">
             <span>CORP_ARCHIVE_v2.1</span>
             <span id="operator-display">USER: OPERATOR-XX</span>
         </div>
         <div class="terminal-body">
             <aside class="sidebar">
-                <img src="taipan-61.png" alt="Taipan-61" style="width: 400%; height: 800%; object-fit: contain; transform: translateX(-13px);">
+                <img src="taipan-61.png" alt="Taipan-61" style="width: 400%; height: 800%; object-fit: contain; transform: translateX(-14px);">
             </aside>
             <main class="content">
                 <a href="../taipan.html" class="btn-open" style="margin-bottom: 20px; display: inline-block;">[ < RETURN TO TAIPAN ]</a>
                 
-                <h1 class="glitch-text">UNIT_DATA // CLASSIFIED</h1>
+                <h1 class="glitch-text">TAIPAN-61 // LIGHT_SCOUT</h1>
                 
-                <div class="family-desc" style="text-align: center; margin-top: 100px; border: none;">
-                    <h2 style="font-size: 2rem; color: #00ff41; text-shadow: 0 0 10px #00ff41;">// COMING SOON //</h2>
-                    <p style="font-size: 1rem; margin-top: 20px;">Схематика и полное досье на эту машину будут загружены в архив позже.</p>
-                    <p style="font-size: 0.8rem; color: #008f11; margin-top: 40px;">[ DATA STREAM INTERRUPTED ]</p>
+                <div>
+                    <p><strong>КОМПАНОВКА</strong> 1-ая компоновка разработки "Taipan" </p>
+                    <h3>Основные характеристики:</h3>
+                </div>
+                <div class="news-item">
+                    <p><strong>> Класс:</strong> Легкая разведывательная машина.</p>
+                    <p><strong>> Компоновка:</strong> 1-я. Инженеры впервые опробовали внедрения большого топливного бака для увеличенного запаса хода из за установленного форсированного двигателя.</p>
+                    <p><strong>> Особенности:</strong> Уменьшенная башня прототипа 0-ой компановки с соблюдением характерной ромбовидной формы задумки "Taipan".</p>
+                    <p><strong>> Вооружение:</strong> Малый-средний калибр. Машина расчитана для быстрых залпов (до 16 снарядов) и отхода от ответного огня.</p>
+                    <p><strong>> Статус:</strong> Малосерийное производство. Высокие потери на поле боя из-за слабой брони и вооружения, но машина остаётся в строю ради уникальных разведывательных и вспомогательных задач.</p>
+                </div>
+                <div>
+                    <h3>Отчёт бригады испытателей:</h3>
+                    <div class="news-item">
+                        <p> «Это не танк, это пуля. Если ты видишь врага — ты уже должен быть за его спиной.</p>
+                        <p> Броня? Её нет, но скосы спасают от дурных выстрелов. Главное — не дать им попасть тебе за спину.</p>
+                        <p>Страшно, но азартно».</p>
+                        <p>— Оператор-102, 2-я испытательная бригада.</p>
+                    </div>
+                </div>
+                <div>
+                    <h3>Тактика применения:</h3>
+                    <div class="news-item">
+                        <p>Машина предназначена для ведения разведки боем и вскрытия засад противника. Благодаря высокой скорости и маневренности, 61-й может быстро менять позицию и уходить из-под огня. В городских условиях рекомендуется действовать осторожно, используя скорость для внезапных атак с флангов, а также манёвренность и малый вес для взбирания на крыши домов.</p>
+                    </div>
+                </div>
+                <div style="margin-top: 30px; border-top: 1px dashed #008f11; padding-top: 20px;"></div>
+                    <button class="toggle-gallery-btn">> ACCESS_VISUAL_RECON</button>
+                    <div class="image-gallery" id="gallery">
+                            <div class="gallery-item">
+                                <img src="taipan-61-front.png" alt="Front View" style="width: 100%; height: auto; object-fit: contain;">
+                                <p>FRONT_VIEW</p>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="taipan-61-side.png" alt="Side View" style="width: 100%; height: auto; object-fit: contain;">
+                                <p>SIDE_VIEW</p>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="taipan-61-back.png" alt="Back View" style="width: 100%; height: auto; object-fit: contain;">
+                                <p>REAR_VIEW</p>
+                            </div>
+                    </div>
+                <div style="margin-top: 10px; border-top: 1px dashed #008f11; padding-top: 20px;"></div>
+                <div style="margin-top: 10px;">
+                <a href="taipan-61.nbt" download class="btn-open">> DOWNLOAD_SCHEMATIC (.nbt)</a>
+                </div>
                 </div>
             </main>
         </div>
@@ -32,6 +74,54 @@
     <script>
         const currentOp = localStorage.getItem('corpOperator') || 'OPERATOR-XX';
         document.getElementById('operator-display').textContent = `USER: ${currentOp}`;
+    </script>
+    <script>
+        const btn = document.querySelector('.toggle-gallery-btn');
+        const gallery = document.getElementById('gallery');
+
+        if (btn && gallery) {
+            gallery.style.display = 'none'; 
+
+            btn.addEventListener('click', () => {
+                if (gallery.style.display === 'none') {
+                    gallery.style.display = 'grid'; // Показываем
+                } else {
+                    gallery.style.display = 'none'; // Скрываем
+                }
+            });
+    }
+    const galleryImages = document.querySelectorAll('.gallery-item img');
+
+    galleryImages.forEach(img => {
+        img.addEventListener('click', () => {
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100vw';
+            overlay.style.height = '100vh';
+            overlay.style.backgroundColor = 'rgba(0,0,0,0.9)';
+            overlay.style.display = 'flex';
+            overlay.style.justifyContent = 'center';
+            overlay.style.alignItems = 'center';
+            overlay.style.zIndex = '9999';
+            overlay.style.cursor = 'pointer';
+
+            const bigImg = document.createElement('img');
+            bigImg.src = img.src;
+            bigImg.style.maxWidth = '90%';
+            bigImg.style.maxHeight = '90%';
+            bigImg.style.border = '2px solid #00ff41';
+            bigImg.style.boxShadow = '0 0 30px #00ff41';
+
+            overlay.appendChild(bigImg);
+            document.body.appendChild(overlay);
+
+            overlay.addEventListener('click', () => {
+                overlay.remove();
+            });
+        });
+    });
     </script>
 </body>
 </html>
