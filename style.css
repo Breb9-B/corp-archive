@@ -111,6 +111,26 @@ button:hover {
 }
 
 /* ========================================= */
+/* --- РАМКА АВТОРИЗАЦИИ (INDEX.HTML) --- */
+/* ========================================= */
+.login-frame {
+    width: 500px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.login-frame pre {
+    margin-bottom: 50px;
+}
+
+.login-frame button {
+    width: 95%;
+    margin-top: 20px;
+}
+
+/* ========================================= */
 /* --- ЗАГРУЗОЧНЫЙ ЭКРАН (LOADER) --- */
 /* ========================================= */
 
@@ -193,6 +213,8 @@ button:hover {
     font-size: 0.85rem;
     letter-spacing: 1px;
     margin: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .terminal-body {
@@ -201,33 +223,36 @@ button:hover {
     flex: 1;
     padding: 0;
     margin: 0;
-    padding-left: 191px;
     overflow: hidden;
     min-height: 0;
 }
 
 .sidebar {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
     width: 160px;
-    padding: 70px 15px 20px 15px;
+    min-width: 160px;
+    max-width: 160px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    padding: 20px 15px;
     border-right: 1px solid #008f11;
     font-size: 0.9rem;
     display: flex;
     flex-direction: column;
     background-color: #050505;
+    overflow-y: hidden;
+    overflow-x: hidden;
     overflow: hidden;
-    justify-content: flex-start;
-    align-items: flex-start;
+    height: 100%;
+    box-sizing: border-box;
 }
 
+
 .sidebar img {
-    align-self: center; 
-    margin-bottom: 20px;
-    width: 140px !important; 
-    height: auto !important; 
+    align-self: center;
+    margin-top: 175px;
+    width: 150px;
+    height: 140px;
+    transform: translateX(-12px);
     object-fit: contain;
 }
 
@@ -267,7 +292,7 @@ button:hover {
     padding: 30px;
     flex: 1;
     overflow-y: auto;
-    min-height: 0;
+    overflow-x: hidden;
 }
 
 .content h1 {
@@ -326,7 +351,7 @@ button:hover {
 }
 
 /* ========================================= */
-/* --- КАТАЛОГ ТЕХНИКИ (TAIPAN, GOLIATH) --- */
+/* --- КАТАЛОГ ТЕХНИКИ --- */
 /* ========================================= */
 .family-desc {
     margin-bottom: 30px;
@@ -340,6 +365,10 @@ button:hover {
     display: flex;
     flex-direction: column;
     gap: 25px; 
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .unit-card {
@@ -348,6 +377,12 @@ button:hover {
     background: rgba(0, 255, 65, 0.02);
     position: relative;
     transition: all 0.3s;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 .unit-card:hover {
@@ -431,6 +466,13 @@ button:hover {
     color: #008f11;
 }
 
+.unit-page-frame {
+    width: 900px;
+    height: 600px; 
+    max-height: 600px;
+    min-height: 600px; 
+    overflow: hidden;  
+}
 /* ========================================= */
 /* --- СТИЛИЗАЦИЯ ПОЛЗУНКА ПРОКРУТКИ --- */
 /* ========================================= */
@@ -452,18 +494,6 @@ button:hover {
 .content::-webkit-scrollbar-thumb:hover {
     background: #00ff41;
     box-shadow: 0 0 10px #00ff41;
-}
-
-
-.sidebar img {
-    align-self: center;
-    transform: translateX(10px);
-    margin: 45px 0;
-    width: 630px !important; 
-    height: auto !important;
-    max-width: none;
-    max-height: none;
-    object-fit: contain;
 }
 /* ========================================= */
 /* --- ГАЛЛЕРЕЯ --- */
